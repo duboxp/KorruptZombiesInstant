@@ -1,0 +1,24 @@
+getgenv().a = true
+
+task.spawn( function()
+local args = {
+    [1] = "EquipWeapon",
+    [2] = 1,
+    [3] = false
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("Remotes"):WaitForChild("RemoteEvent"):FireServer(unpack(args))
+end)
+
+while a do task.wait()
+for i,v in pairs(game:GetService("Workspace").Zombies:GetChildren()) do
+if v:IsA("Model") then
+local args = {
+    [1] = "MeleeHit",
+    [2] = v
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("Remotes"):WaitForChild("RemoteEvent"):FireServer(unpack(args))
+end
+end
+end
